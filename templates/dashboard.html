@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="icon" href="https://via.placeholder.com/16" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ds.css') }}">
+
+
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://via.placeholder.com/30" alt="Logo" class="d-inline-block align-text-top">
+                Freelancer Platform
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            Notifications <span class="badge bg-danger" id="notificationCount">0</span>
+                        </a>
+                        <ul class="dropdown-menu" id="notificationList">
+                            {% for notification in notifications %}
+                                <li><a class="dropdown-item" href="#">{{ notification.message }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container (Side Panel + Content) -->
+    <div class="main-container">
+        <!-- Left Side Panel -->
+        <div class="side-panel">
+            <img src="https://avatar.iran.liara.run/public/25" alt="Profile Image">
+            <h4>{{ user[1] }}</h4>
+            <p><strong>Email:</strong> {{ user[2] }}</p>
+            <p><strong>Role:</strong> {{ user[4] }}</p>
+
+            <!-- Add the "Post Project" button -->
+            <a href="{{ url_for('create_project') }}" class="post-project-btn">Post Project</a>
+
+            <h5>Profile</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">My Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Edit Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Settings</a>
+                </li>
+            </ul>
+
+            <h5>Account</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Change Password</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Payment Methods</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Right Content Area -->
+        <div class="content">
+            <!-- Search and Filter for Freelancers -->
+            <div class="mt-4">
+                <h4>Freelancers</h4>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <input type="text" id="freelancerSearch" class="form-control" placeholder="Search freelancers...">
+                    </div>
+                    <div class="col-md-3">
+                        <select id="skillFilter" class="form-select">
+                            <option value="">Filter by Skill</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Mobile Development">Mobile Development</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select id="ratingFilter" class="form-select">
+                            <option value="">Filter by Rating</option>
+                            <option value="5">5 Stars</option>
+                            <option value="4">4 Stars & Up</option>
+                            <option value="3">3 Stars & Up</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" id="freelancerList">
+                   {% for freelancer in freelancers %}
+    <div class="col-md-4 mb-4 freelancer-card" data-skills="{{ freelancer.skills }}" data-rating="{{ freelancer[8] }}">
+        <div class="card">
+            <img src="https://avatar.iran.liara.run/public/38" class="card-img-top" alt="Freelancer Image">
+            <div class="card-body">
+                <h5 class="card-title">{{ freelancer[1] }}</h5>  <!-- freelancer[1] for full_name -->
+                <p class="card-text">{{ freelancer[2] }}</p>    <!-- freelancer[2] for email -->
+                <p><strong>Rating:</strong> {{ freelancer[8] }}/5</p>  <!-- freelancer[8] for rating -->
+                <a href="#" class="btn btn-primary">View Profile</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+                </div>
+            </div>
+
+            <!-- Job Offers Section -->
+            <div class="mt-4">
+                <h4>Job Offers</h4>
+                <p>Here are some existing job offers in the system.</p>
+
+                <div class="row">
+                    {% for job in jobs %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ job[2] }}</h5>
+                                    <p class="card-text">{{ job[3] }}</p>
+                                    <a href="#" class="btn btn-primary">Apply Now</a>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="#">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <a href="#" class="btn btn-secondary">See More Projects</a>
+            </div>
+
+            <!-- Message Bubbles Section -->
+            <div class="mt-4">
+                <h4>Messages</h4>
+                <div class="row">
+                    {% for message in messages %}
+                        <div class="col-md-4 mb-4">
+                            <div class="message-bubble" data-receiver-id="{{ message.receiver_id }}">
+                                <div class="message-sender">{{ message.sender_name }}</div>
+                                <div class="message-preview">{{ message.message | truncate(30) }}</div>
+                                <div class="message-timestamp">{{ message.timestamp }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Chat Interface (Hidden by Default) -->
+            <div id="chatInterface" class="chat-interface">
+                <h4 id="chatTitle">Chat with <span id="chatReceiverName"></span></h4>
+                <div id="chatMessages" class="chat-messages">
+                    <!-- Chat messages will be loaded here -->
+                </div>
+                <div class="chat-input-container">
+                    <textarea id="chatMessageInput" class="chat-input" placeholder="Type your message..."></textarea>
+                    <button id="chatSendButton" class="send-button">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2023 Freelancer Platform. All rights reserved.
+    </div>
+
+    <script>
+        // JavaScript for filtering freelancers
+        document.getElementById('freelancerSearch').addEventListener('input', filterFreelancers);
+        document.getElementById('skillFilter').addEventListener('change', filterFreelancers);
+        document.getElementById('ratingFilter').addEventListener('change', filterFreelancers);
+
+        function filterFreelancers() {
+            const searchQuery = document.getElementById('freelancerSearch').value.toLowerCase();
+            const skillFilter = document.getElementById('skillFilter').value;
+            const ratingFilter = document.getElementById('ratingFilter').value;
+
+            document.querySelectorAll('.freelancer-card').forEach(card => {
+                const name = card.querySelector('.card-title').textContent.toLowerCase();
+                const skills = card.getAttribute('data-skills').toLowerCase();
+                const rating = parseFloat(card.getAttribute('data-rating'));
+
+                const matchesSearch = name.includes(searchQuery);
+                const matchesSkill = skillFilter ? skills.includes(skillFilter.toLowerCase()) : true;
+                const matchesRating = ratingFilter ? rating >= parseFloat(ratingFilter) : true;
+
+                if (matchesSearch && matchesSkill && matchesRating) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // JavaScript for message bubbles and chat interface
+        document.querySelectorAll('.message-bubble').forEach(bubble => {
+            bubble.addEventListener('click', () => {
+                const receiverId = bubble.getAttribute('data-receiver-id');
+                const receiverName = bubble.querySelector('.message-sender').textContent;
+
+                // Show the chat interface
+                document.getElementById('chatInterface').style.display = 'block';
+                document.getElementById('chatReceiverName').textContent = receiverName;
+
+                // Load messages for this conversation
+                loadChatMessages(receiverId);
+            });
+        });
+
+        // Function to load chat messages
+        function loadChatMessages(receiverId) {
+            fetch(`/get_messages/${receiverId}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('chatMessages').innerHTML = data;
+                });
+        }
+
+        // Handle sending messages
+        document.getElementById('chatSendButton').addEventListener('click', () => {
+            const message = document.getElementById('chatMessageInput').value;
+            const receiverId = document.querySelector('.message-bubble[data-receiver-id]').getAttribute('data-receiver-id');
+
+            if (message.trim() === "") {
+                alert("Message cannot be empty!");
+                return;
+            }
+
+            fetch('/send_message', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ receiver_id: receiverId, message: message })
+            }).then(response => response.text())
+              .then(data => {
+                  document.getElementById('chatMessageInput').value = '';
+                  loadChatMessages(receiverId); // Refresh the chat messages
+              });
+        });
+
+        // JavaScript for notifications
+        function loadNotifications() {
+    fetch('/get_notifications')
+        .then(response => response.json()) // Assuming the server returns JSON
+        .then(data => {
+            const notificationList = document.getElementById('notificationList');
+            notificationList.innerHTML = ''; // Clear existing notifications
+
+            // Add new notifications
+            data.forEach(notification => {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.className = 'dropdown-item';
+                link.href = '#';
+                link.textContent = notification.message;
+                listItem.appendChild(link);
+                notificationList.appendChild(listItem);
+            });
+
+            // Update notification count
+            document.getElementById('notificationCount').textContent = data.length;
+        })
+        .catch(error => console.error('Error loading notifications:', error));
+}
+
+setInterval(loadNotifications, 5000); // Refresh notifications every 5 seconds
+
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

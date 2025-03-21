@@ -1,0 +1,309 @@
+body {
+            background-color: #F4F6F8;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar */
+        .navbar-dark {
+            background-color: #333333 !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #777777 !important;
+        }
+
+        .btn-primary {
+            background-color: #555555;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #333333;
+        }
+
+        .btn-secondary {
+            background-color: #777777;
+            border: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: #555555;
+        }
+
+        /* Main Layout */
+        .main-container {
+            display: flex;
+            flex-grow: 1;
+            padding: 0;
+            overflow: hidden; /* Prevent double scrollbar */
+        }
+
+        .side-panel {
+            width: 15%;
+            background-color: #333333;
+            color: white;
+            padding: 20px;
+            box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 50px;
+            overflow-y: auto; /* Allow scrolling only if content exceeds height */
+        }
+
+        .side-panel img {
+            width: 70%;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .side-panel h4 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .side-panel p {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .side-panel .nav-link {
+            color: white;
+            padding-left: 0;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .side-panel .nav-link:hover {
+            color: #777777;
+        }
+
+        .side-panel h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        /* Style for the "Post Project" button */
+        .side-panel .post-project-btn {
+            background-color: #57B4BA; /* Use a color that matches your theme */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px; /* Add some space above the button */
+            width: 100%; /* Make the button full width */
+            text-align: center;
+        }
+
+        .side-panel .post-project-btn:hover {
+            background-color: #3a9290; /* Darker shade for hover effect */
+        }
+
+        .content {
+            width: 85%;
+            padding: 30px;
+            margin-left: 15%;
+            background-color: #ffffff;
+            overflow-y: auto; /* Allow scrolling only in content area */
+            height: calc(100vh - 60px); /* Adjust height to account for navbar */
+        }
+
+        .content h2 {
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        .content h4, .content h5 {
+            color: #333333;
+            font-weight: 600;
+        }
+
+        .container-fluid {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .row {
+            margin-right: 0;
+            margin-left: 0;
+        }
+
+        /* Enhanced Styles for Content */
+        .card {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            height: 100%; /* Ensure cards take full height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-body {
+            padding: 20px;
+            flex: 1; /* Allow card body to grow and fill space */
+            text-align: center; /* Center the content */
+        }
+
+        .card-img-top {
+            border-radius: 50%; /* Make the image round */
+            width: 100px; /* Set a smaller width */
+            height: 100px; /* Set a smaller height */
+            object-fit: cover;
+            margin: 0 auto 15px; /* Center the image and add margin below */
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            color: #333333;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: #555555;
+        }
+
+        .nav-link {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .card-footer {
+            background-color: #f9f9f9;
+            border-top: 1px solid #ddd;
+            padding: 10px 15px;
+            text-align: right;
+        }
+
+        .card-footer a {
+            color: #555555;
+            text-decoration: none;
+        }
+
+        .card-footer a:hover {
+            color: #333333;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Message Bubbles */
+        .message-bubble {
+            background-color: #f1f1f1;
+            border-radius: 15px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .message-bubble:hover {
+            background-color: #e1e1e1;
+        }
+
+        .message-sender {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .message-preview {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .message-timestamp {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        /* Chat Interface */
+        .chat-interface {
+            display: none; /* Hidden by default */
+            margin-top: 20px;
+        }
+
+        .chat-messages {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .chat-message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .chat-message.sender {
+            background-color: #e3f2fd;
+            margin-left: auto;
+            max-width: 70%;
+        }
+
+        .chat-message.receiver {
+            background-color: #f5f5f5;
+            margin-right: auto;
+            max-width: 70%;
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .send-button {
+            border-radius: 8px;
+            padding: 10px 20px;
+            background-color: #57B4BA;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .send-button:hover {
+            background-color: #3a9290;
+        }

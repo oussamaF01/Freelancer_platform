@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Platform</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <!-- Logo Image -->
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" style="width: 40px; height: auto; margin-right: 10px;">
+            Freelancer Platform
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary text-white rounded-pill px-4 py-2" href="/login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+   <!-- Carousel -->
+<div id="homeCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <h2>Find the Best Freelancers</h2>
+                        <p>Connect with top professionals and get your work done efficiently.</p>
+                        <a href=/signup class="btn btn-primary">Sign Up</a>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{ url_for('static', filename='img/1.jpeg') }}" class="d-block w-100 rounded" alt="Freelancer working">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 order-md-2 text-center text-md-start">
+                        <h2>Sell Your Services</h2>
+                        <p>Showcase your skills and attract clients worldwide.</p>
+                        <a href="/signup" class="btn btn-primary">Sign Up</a>
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <img src="{{ url_for('static', filename='img/2.jpg') }}" class="d-block w-100 rounded" alt="Freelancer profile">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <h2>Secure Payments</h2>
+                        <p>Get paid safely and securely for your hard work.</p>
+                        <a href="/signup" class="btn btn-primary">Sign Up</a>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{ url_for('static', filename='img/3.jpeg') }}" class="d-block w-100 rounded" alt="Secure payment">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+
+
+
+<!-- Services Section -->
+<section id="services" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4" style="color: #ff4f5a;">Our Services</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+            <!-- Service 1 -->
+            <div class="col">
+                <div class="card shadow border-0">
+                    <img src="{{ url_for('static', filename='img/work-from-home.png') }}" class="card-img-top" alt="Service 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Hire Talented Freelancers</h5>
+                        <p class="card-text">Connect with highly skilled freelancers who can bring your ideas to life.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="col">
+                <div class="card shadow border-0">
+                    <img src="{{ url_for('static', filename='img/gestion-de-projet.png') }}" class="card-img-top" alt="Service 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Post Your Projects</h5>
+                        <p class="card-text">Easily post your projects and receive bids from freelancers ready to work.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="col">
+                <div class="card shadow border-0">
+                    <img src="{{ url_for('static', filename='img/paiement.png') }}" class="card-img-top" alt="Service 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Secure Payments</h5>
+                        <p class="card-text">Make secure payments to freelancers upon successful project completion.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <!-- About Section -->
+<section id="about" class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left Column - Text -->
+            <div class="col-md-6">
+                <h2 class="mb-4" style="color: #ff4f5a;">About Us</h2>
+                <p>
+                    Welcome to the Freelancer Platform, the best place to connect with top-notch professionals and get your work done efficiently. Whether you're a business owner looking for skilled freelancers or an individual offering services, we make the process simple and secure.
+                </p>
+                <p>
+                    Our platform connects freelancers with clients around the world, providing an easy-to-use interface and a safe environment for both parties. We ensure that every transaction is secure and that you get paid for the work you complete.
+                </p>
+            </div>
+
+            <!-- Right Column - Image -->
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='img/1.jpeg') }}" class="img-fluid rounded" alt="About Us Image">
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4" style="color: #ff4f5a;">Contact Us</h2>
+
+        <!-- Contact Form -->
+        <div class="row">
+            <div class="col-md-6">
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Your Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Your Message</label>
+                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="col-md-6">
+                <h4>Other Ways to Contact</h4>
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-envelope-fill"></i> Email: <a href="mailto:info@freelancer.com">info@freelancer.com</a></li>
+                    <li><i class="bi bi-phone-fill"></i> Phone: +123 456 789</li>
+                    <li><i class="bi bi-facebook"></i> <a href="#">Facebook</a></li>
+                    <li><i class="bi bi-twitter"></i> <a href="#">Twitter</a></li>
+                    <li><i class="bi bi-linkedin"></i> <a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <div class="row">
+            <!-- Copyright Section -->
+            <div class="col-12">
+                <p>&copy; 2025 Freelancer Platform. All Rights Reserved.</p>
+            </div>
+            <!-- Social Media Links -->
+            <div class="col-12">
+                <ul class="list-unstyled d-flex justify-content-center">
+                    <li class="mx-3">
+                        <a href="#" class="text-white" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li class="mx-3">
+                        <a href="#" class="text-white" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li class="mx-3">
+                        <a href="#" class="text-white" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li class="mx-3">
+                        <a href="#" class="text-white" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- FontAwesome JS for Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
